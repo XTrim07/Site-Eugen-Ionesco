@@ -1,0 +1,29 @@
+  /*navigation*/
+  .navigation {
+    width: 150px;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    top: 138px;
+    left: 20px;
+    height: fit-content;
+    transition: top 0.3s ease;
+  }
+
+  .navigation.sticky {
+    top: 50px;
+  }
+
+  .navigation h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .navigation h2:hover {
+    color: #666;
+  }

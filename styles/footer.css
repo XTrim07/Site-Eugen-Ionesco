@@ -1,0 +1,28 @@
+  /* footer */
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .footer-item {
+    margin-bottom: 10px;
+  }
+
+  .footer-label {
+    font-weight: bold;
+  }
+
+  .footer-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+  }
