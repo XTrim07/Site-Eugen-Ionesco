@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eugen Ionescu</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Sans+MS&display=swap">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    main {
+      display: flex;
+    }
+
+    .navigation {
+      width: 150px;
+      background-color: #f1f1f1;
+      color: #333;
+      padding: 10px;
+      border-radius: 10px;
+      position: fixed;
+      top: 150px;
+      left: 20px;
+      height: fit-content;
+      transition: top 0.3s ease;
+    }
+
+    .navigation.sticky {
+      top: 50px;
+    }
+
+    .navigation h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .navigation h2:hover {
+      color: #666;
+    }
+
+    .content {
+      flex-grow: 1;
+      margin-left: 180px;
+      margin-top: 43px;
+      margin-bottom: 50px;
+      margin-right: 20px;
+    }
+
+    .content-box {
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .content h2.section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
+    .content p {
+      line-height: 1.6;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    /* Added jump box styles */
+    .jump-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .jump-box.visible {
+      opacity: 1;
+    }
+
+    .image-container {
+      margin-top: 43px;
+      margin-right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 30px;
+    }
+
+    .image-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      width: 250px;
+    }
+
+    .rounded-image {
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .image-title {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /*second image */
+    .second-image-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      width: 250px;
+      margin-top: 30px; /* Add some space between the images */
+    }
+
+    .second-rounded-image {
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .second-image-title {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    header {
+      background-image: url("b2.jpg"); /* Add the background image */
+      background-size: cover; /* Adjust the background image size */
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /*table*/
+    table {
+      border-collapse: collapse;
+      width: 600px;
+      margin: 0 auto; /* Center the table */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    caption {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+        }
+
+    .footer-item {
+      margin-bottom: 10px;
+    }
+
+    .footer-label {
+      font-weight: bold;
+    }
+
+    .footer-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eugen Ionescu</h1>
+  </header>
+
+  <main>
+    <div class="navigation">
+      <h2 onclick="scrollToSection('about')">Despre</h2>
+      <h2 onclick="scrollToSection('early-life')">Viața</h2>
+      <h2 onclick="scrollToSection('works')">Cariera sa</h2>
+      <h2 onclick="scrollToSection('legacy')">Mostenire culturala</h2>
+      <h2 onclick="scrollToSection('personal-life')">Ediții în limba română</h2>
+      <h2 onclick="scrollToSection('quotes')">Citate</h2>
+      <h2 onclick="scrollToSection('translation')">Traduceri</h2>
+    </div>
+
+    <div class="content">
+      <div class="content-box">
+        <h2 id="about" class="section-title">Despre Eugen Ionescu</h2>
+        <p>
+          Eugen Ionescu, cunoscut si sub numele de Eugène Ionesco, a fost scriitor, dramaturg, poet, prozator, eseist, critic literar, diarist, 
+          ilustrator si grafician, originar din Romania, protagonist al teatrului absurdului si membru al Academiei Franceze, acesta 
+          fiind primul scriitor de origine romana cu o atat de inalta distinctie.
+        </p>
+
+        <h2 id="early-life" class="section-title">Viața lui Eugen Ionescu</h2>
+        <p>
+          <p>
+            Eugen Ionescu s-a născut în România, însă de-a lungul vieții, el nu a manifestat o afecțiune deosebită față de țara sa natală și a 
+            depus eforturi considerabile pentru a o părăsi. S-a născut în Slatina, județul Olt, pe data de 26 noiembrie 1909. În primii ani de 
+            viață, a locuit în România până când părinții săi au luat decizia de a se stabili în Franța.
+          </p>
+          
+          <p>
+            Mama lui, Marie-Thérèse, era fiica unui inginer francez care lucra în România. Tatăl lui Eugen Ionescu, a profesat drept avocat, 
+            dar a avut mai multe ocupații pe parcursul vieții. În familia lor mai era o soră, numită Marilina.
+          </p>
+          
+          <p>
+            Cu izbucnirea Primului Război Mondial, tatăl lui Ionescu a fost nevoit să se întoarcă în România și să se alăture armatei în anul 
+            1916. După încheierea războiului, relația părinților săi s-a deteriorat, iar aceștia au divorțat în 1924. În urma divorțului, mama a 
+            pierdut custodia copiilor, iar tatăl i-a adus pe cei doi copii înapoi în România. În noua familie, copiii au suferit abuzuri fizice și 
+            verbale, experiențe traumatizante care au lăsat o amprentă adâncă în dezvoltarea artistică a lui Ionescu.
+          </p>
+          
+          <p>
+            Eugen Ionescu și-a continuat educația în România, urmând liceul la Colegiul Național Sfântul Sava din București. Examenul de 
+            bacalaureat l-a susținut la Colegiul Național Carol I din Craiova. Ulterior, s-a înscris la Facultatea de Litere din București, 
+            obținând o licență în limba franceză. După absolvirea facultății în 1934, a lucrat ca profesor de limbă franceză mai întâi la Cernavodă 
+            și apoi la București.
+          </p>
+          
+          <p>
+            În anul 1936, s-a căsătorit cu Rodica Burileanu, iar în 1938 a obținut o bursă care i-a permis să se stabilească în Paris. El a 
+            considerat această plecare ca un exil personal, exprimându-și dorința de a nu mai trăi în orașul sau țara respectivă. Cu toate acestea, 
+            a durat 14 ani până când a reușit să se elibereze definitiv de România. Franța a devenit locul în care s-a simțit acasă și unde și-a 
+            găsit fericirea, evoluând ca scriitor.
+          </p>
+          
+          <p>
+            Pentru contribuția sa în domeniul literaturii, Eugen Ionescu a devenit membru al Academiei Franceze și, în mod postum, membru al 
+            Academiei Române. El a încetat din viață la data de 28 martie 1994, la Paris, la vârsta de 84 de ani, și a fost înmormântat în capitala 
+            Franței.
+          </p>
+        </p>
+
+        <h2 id="works" class="section-title">Cariera sa</h2 >
+        <p>
+          <p>
+            Acesta și-a început debutul carierei în România, primele apariții ale lui Eugen Ionescu fiind în limba română, cu poezii publicate în 
+            revista "Bilete de papagal" (între anii 1928-1931) a lui Tudor Arghezi, o încercare de epica umoristică, "Hugoliada: Viața grotescă și 
+            tragică a lui Victor Hugo" și articole de critică literară.
+          </p>
+          
+          <p>
+            Volumul de debut este un volum de versuri numit "Elegii pentru ființe mici". Cele mai cunoscute scrieri în limba română sunt eseurile 
+            critice publicate în volumul intitulat "Nu!", premiat de un juriu prezidat de Tudor Vianu pentru "scriitori tineri needitați".
+          </p>
+          
+          <p>
+            Ulterior, acesta a început să scrie piese de teatru, adeseori Ionescu fiind numit creatorul și maestrul teatrului absurdului. 
+            Prima lui piesă de teatru a fost "La Cantatrice Chauve" („Cântăreața cheală”), și a fost reprezentată la 11 mai 1950 la Théâtre de la 
+            Huchette în regia lui Nicholas Bataille.
+          </p>
+          
+          <p>
+            O altă piesă de Ionescu intitulată "Setea si Foamea" a fost prezentată în 1966 la cel mai cunoscut teatru francez al vremii, La Comédie 
+            Française, iar după o a doua piesă denumită "Regele moare" a fost interpretată la același teatru.
+          </p>
+          
+          <p>
+            După aceste două mari piese, în anul 1970 Eugen Ionescu este ales ca membru al Academiei Franceze. Opera lui Eugen Ionescu a constituit 
+            obiectul a zeci de cărți și sute de studii, teze de doctorat, colocvii internaționale, simpozioane și festivaluri.
+          </p>
+          
+          <p>
+            Criticii disting, în general, două perioade sau maniere ale teatrului ionescian. Prima cuprinde piese scurte, cu personaje elementare 
+            și mecanice, cu limbaj aberant și caracter comic predominant: "Cântăreața cheală", "Lecția", "Scaunele" și altele.
+          </p>
+          
+          <p>
+            A doua încadrează piese ca "Ucigaș fără simbrie", "Rinocerii", "Regele moare" etc., în care apare un personaj principal, un mic 
+            funcționar modest sau rege visător și naiv, cu numele de Berenger sau Jean. În aceste piese, acțiunea și decorul capătă importanță, 
+            limbajul este mai puțin derutant și comicul este înlocuit progresiv cu tragicul. Temele predominante sunt singurătatea și izolarea, 
+            falsitatea, vacuitatea.
+          </p>
+          
+          <p>
+            Obsesia morții este marea forță motrice a operei lui Eugen Ionescu, de la moartea gândirii și a limbajului la moartea neînțeleasă și 
+            neacceptabilă a individului. Prin ce minune, atunci, geniul autorului creează în mod paradoxal comicul? Nici didactic, nici moralizant, 
+            antisentimental și anticonvențional, teatrul lui Ionescu este un teatru-joc, un joc adevărat, deci liber și straniu, pur și sincer, 
+            provocator, un lanț pasionant, vertiginos și în toate direcțiile.
+          </p>
+          
+          <p>
+            De fapt, comedia și tragedia se împletesc necontenit: drumul luminos de comedie devine drumul spre întuneric, spre moarte.
+          </p>
+        </p>
+
+        <h2 id="legacy" class="section-title">Moștenire culturală</h2>
+        <p>
+          Dupa moartea lui Eugen Ionescu in anul 1994, acesta a lasat in urma o multitudine de opere, piese si scrieri, printre care cele mai importante sunt:
+          <table>
+            <tr>
+              <th>Dramă</th>
+              <th>Anul</th>
+            </tr>
+            <tr>
+              <td>Cântăreața cheală</td>
+              <td>1950</td>
+            </tr>
+            <tr>
+              <td>Lecția</td>
+              <td>1951</td>
+            </tr>
+            <tr>
+              <td>Scaunele</td>
+              <td>1952</td>
+            </tr>
+            <tr>
+              <td>Victimele datoriei</td>
+              <td>1953</td>
+            </tr>
+            <tr>
+              <td>Amedeu sau scapi de el cu greu</td>
+              <td>1954</td>
+            </tr>
+            <tr>
+              <td>Jacques sau supunerea</td>
+              <td>1955</td>
+            </tr>
+            <tr>
+              <td>Noul locatar</td>
+              <td>1955</td>
+            </tr>
+            <tr>
+              <td>Ucigaș fără simbrie</td>
+              <td>1957</td>
+            </tr>
+            <tr>
+              <td>Rinocerii</td>
+              <td>1959</td>
+            </tr>
+            <tr>
+              <td>Regele moare</td>
+              <td>1962</td>
+            </tr>
+            <tr>
+              <td>Pietonul văzduhului</td>
+              <td>1963</td>
+            </tr>
+            <tr>
+              <td>Setea și foamea</td>
+              <td>1966</td>
+            </tr>
+            <tr>
+              <td>Delir în doi</td>
+              <td>1967</td>
+            </tr>
+            <tr>
+              <td>Jocul de-a măcelul</td>
+              <td>1970</td>
+            </tr>
+            <tr>
+              <td>Macbett</td>
+              <td>1972</td>
+            </tr>
+            <tr>
+              <td>Ce formidabilă harababură</td>
+              <td>1973</td>
+            </tr>
+            <tr>
+              <td>Omul cu valize</td>
+              <td>1975</td>
+            </tr>
+            <tr>
+              <td>Călătorie în lumea morților</td>
+              <td>1980</td>
+            </tr>
+            <tr>
+              <td>La Photo du Colonel</td>
+              <td>1962</td>
+            </tr>
+            <tr>
+              <td>Note despre teatrul de avangardă</td>
+              <td>1962</td>
+            </tr>
+            <tr>
+              <td>Note și contranote</td>
+              <td>1966</td>
+            </tr>
+            <tr>
+              <td>Jurnal în fărâme</td>
+              <td>1967</td>
+            </tr>
+            <tr>
+              <td>Prezent trecut, trecut prezent</td>
+              <td>1968</td>
+            </tr>
+            <tr>
+              <td>Descoperiri</td>
+              <td>1969</td>
+            </tr>
+            <tr>
+              <td>Solitarul</td>
+              <td>1973</td>
+            </tr>
+            <tr>
+              <td>Situații și perspective</td>
+              <td>1980</td>
+            </tr>
+            <tr>
+              <td>Căutarea intermitentă</td>
+              <td>1988</td>
+            </tr>
+          </table>
+        </p>
+
+        <h2 id="personal-life" class="section-title">Ediții în limba română</h2>
+        <p>
+          <table>
+            <tr>
+              <th>Titlu</th>
+              <th>Detalii</th>
+            </tr>
+            <tr>
+              <td>Elegii pentru ființe mici, versuri</td>
+              <td>București, Editura Cercul Analelor Române, 1931 (reeditări: București, Editura Jurnalul Literar, 1990)</td>
+            </tr>
+            <tr>
+              <td>Nu!</td>
+              <td>București, Editura Vremea, 1934 (reeditări: București, Editura Humanitas, 1991; 2002)</td>
+            </tr>
+            <tr>
+              <td>Viața grotescă și tragică a lui Victor Hugo</td>
+              <td>Ideea românească, 1935</td>
+            </tr>
+            <tr>
+              <td>Antidoturi</td>
+              <td>Traducere de Marina Dimov, București, Editura Humanitas, 1993</td>
+            </tr>
+            <tr>
+              <td>Căutarea intermitentă</td>
+              <td>Traducere de Barbu Cioculescu, București, Editura Humanitas, 1994</td>
+            </tr>
+            <tr>
+              <td>Însinguratul, roman</td>
+              <td>Traducere de Rodica Chiriacescu, București, Editura Albatros, 1990</td>
+            </tr>
+            <tr>
+              <td>Între viață și vis. Convorbiri cu Claude Bonnefoy</td>
+              <td>Traducere de Simona Cioculescu, București, Editura Humanitas, 1999</td>
+            </tr>
+            <tr>
+              <td>Jurnal în fărâme</td>
+              <td>Traducere de Irina Bădescu, București, Editura Humanitas, 1992</td>
+            </tr>
+            <tr>
+              <td>Note și contranote</td>
+              <td>Traducere și cuvânt introductiv de Ion Pop, București, Editura Humanitas, 1992</td>
+            </tr>
+            <tr>
+              <td>Prezent trecut, trecut prezent</td>
+              <td>Traducere de Simona Cioculescu, București, Editura Humanitas, 1993</td>
+            </tr>
+            <tr>
+              <td>Sub semnul întrebării</td>
+              <td>Traducere de Natalia Cernăuțeanu, București, Editura Humanitas, 1994</td>
+            </tr>
+            <tr>
+              <td>Teatru</td>
+              <td>Traducere, cuvânt înainte și note asupra ediției de Dan C. Mihăilescu, vol. I-V, București, Editura Univers, 1994-1998</td>
+            </tr>
+            <tr>
+              <td>Teatru</td>
+              <td>traducere de Vlad Russo și Vlad Zografi, vol. I-XI, București, Editura Humanitas, 2003-2010</td>
+            </tr>
+            <tr>
+              <td>Eu</td>
+              <td>Ediție îngrijită de Mariana Vartic. Cu un prolog la Englezește fără profesor de Gelu Ionescu și un epilog de Ion Vartic Cluj, Editura Echinox, 1990</td>
+            </tr>
+            <tr>
+              <td>Război cu toată lumea</td>
+              <td>Publicistică românească, vol. I-II ediție îngrijită și bibliografie de Mariana Vartic și Aurel Sasu, București, Editura Humanitas, 1992</td>
+            </tr>
+          </table>
+        </p>
+
+        <h2 id="quotes" class="section-title">Citate importante</h2>
+          <ul>
+            <li>"Un scriitor nu are niciodată vacanță. Acesta ori scrie, ori se gândește despre ce să scrie."</li>
+            <li>"O operă de artă este, în primul rând, o aventură a minții."</li>
+            <li>"Nu e răspunsul cel care te luminează, ci întrebarea."</li>
+            <li>"O persoană a cărei minți nu încearcă să se adapteze la o idee nouă este izolată de lume."</li>
+            <li>"Explicația ne separă de uimire, care este singura poartă către neînțeles."</li>
+            <li>"Finalul copilăriei este atunci când lucrurile nu ne mai uimesc. Când lumea pare cunoscută, când te-ai obișnuit cu existența, atunci ai devenit un adult."</li>
+            <li>"De ce oamenii se așteaptă mereu de la autori să răspundă întrebărilor? Eu sunt un autor pentru că vreau să pun întrebări. Dacă aveam răspunsuri, mă făceam politician."</li>
+            <li>"Ideologiile ne separă. Visele și chinurile ne aduc împreună."</li>
+          </ul>
+
+        <h2 id="translation" class="section-title">Traduceri</h2>
+        <p>
+          Eugen Ionescu a tradus în limba franceză și a prefațat volumul de nuvele al ardeleanului Pavel Dan, Urcan Bătrânul. Volumul tradus a apărut la editura Jean Vigneau din Marsilia (Marseille), în anul 1945, cu titlul Le Père Urcan.
+        </p>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <div class="image-box">
+        <img src="eugene ionesco.jpeg" alt="Eugen Ionesco" class="rounded-image">
+        <div class="image-title">Eugen Ionescu</div>
+      </div>
+      <div class="second-image-box">
+        <img src="Eugen Ionesco Desen2.png" alt="Eugen Ionesco - ilustratie realizata de Stoianova Daniel" class="second-rounded-image">
+        <div class="second-image-title">Eugen Ionescu - ilustrație</div>
+      </div>
+    </div>
+    <div class="jump-box" onclick="scrollToTop()" id="jumpBox">↑</div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-item">
+        <span class="footer-label">Scoala de proveniența:</span>
+        <ul class="footer-list">
+          <li>Liceul Teoretic Alexandru Ioan Cuza</li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <span class="footer-label">Profesori coordonatori:</span>
+        <ul class="footer-list">
+          <li>Chiriță Valentina (prof. informatica)</li>
+          <li>Dima Irina Florina (prof. romana)</li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <span class="footer-label">Site realizat de:</span>
+        <ul class="footer-list">
+          <li>Florea Andrei Șerban</li>
+          <li>Stoianova Daniel</li>
+          <li>Mareș Andrei</li>
+          <li>Mihăiță Alexandru</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script>
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', function () {
+      const jumpBox = document.getElementById('jumpBox');
+      if (jumpBox) {
+        if (window.pageYOffset > 200) {
+          jumpBox.classList.add('visible');
+        } else {
+          jumpBox.classList.remove('visible');
+        }
+      }
+
+      const navigation = document.querySelector('.navigation');
+      if (navigation) {
+        if (window.pageYOffset > 100) {
+          navigation.classList.add('sticky');
+        } else {
+          navigation.classList.remove('sticky');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
