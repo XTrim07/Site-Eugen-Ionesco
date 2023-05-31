@@ -1,246 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="styles/basic.css">
+  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="styles/first_img.css">
+  <link rel="stylesheet" href="styles/second_img.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/jump_box.css">
+  <link rel="stylesheet" href="styles/navigation.css">
+  <link rel="stylesheet" href="styles/table.css">
+  <link rel="stylesheet" href="styles/header.css">
+  
   <title>Eugen Ionescu</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Sans+MS&display=swap">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    main {
-      display: flex;
-    }
-
-    .navigation {
-      width: 150px;
-      background-color: #f1f1f1;
-      color: #333;
-      padding: 10px;
-      border-radius: 10px;
-      position: fixed;
-      top: 150px;
-      left: 20px;
-      height: fit-content;
-      transition: top 0.3s ease;
-    }
-
-    .navigation.sticky {
-      top: 50px;
-    }
-
-    .navigation h2 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .navigation h2:hover {
-      color: #666;
-    }
-
-    .content {
-      flex-grow: 1;
-      margin-left: 180px;
-      margin-top: 43px;
-      margin-bottom: 50px;
-      margin-right: 20px;
-    }
-
-    .content-box {
-      background-color: #f1f1f1;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .content h2.section-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-top: 20px;
-    }
-
-    .content p {
-      line-height: 1.6;
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-    /* Added jump box styles */
-    .jump-box {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: #333;
-      color: #fff;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .jump-box.visible {
-      opacity: 1;
-    }
-
-    .image-container {
-      margin-top: 43px;
-      margin-right: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin-bottom: 30px;
-    }
-
-    .image-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-radius: 10px;
-      background-color: #f1f1f1;
-      padding: 20px;
-      width: 250px;
-    }
-
-    .rounded-image {
-      border-radius: 10px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .image-title {
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    /*second image */
-    .second-image-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-radius: 10px;
-      background-color: #f1f1f1;
-      padding: 10px;
-      width: 250px;
-      margin-top: 30px; /* Add some space between the images */
-    }
-
-    .second-rounded-image {
-      border-radius: 10px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .second-image-title {
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    header {
-      background-image: url("b2.jpg"); /* Add the background image */
-      background-size: cover; /* Adjust the background image size */
-      background-position: center;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    /*table*/
-    table {
-      border-collapse: collapse;
-      width: 600px;
-      margin: 0 auto; /* Center the table */
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    caption {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    /* footer */
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-        }
-
-    .footer-item {
-      margin-bottom: 10px;
-    }
-
-    .footer-label {
-      font-weight: bold;
-    }
-
-    .footer-list {
-      list-style-type: disc;
-      padding-left: 20px;
-      text-align: left;
-    }
-  </style>
 </head>
 <body>
   <header>
     <h1>Eugen Ionescu</h1>
   </header>
-
   <main>
     <div class="navigation">
       <h2 onclick="scrollToSection('about')">Despre</h2>
@@ -565,11 +341,11 @@
 
     <div class="image-container">
       <div class="image-box">
-        <img src="eugene ionesco.jpeg" alt="Eugen Ionesco" class="rounded-image">
+        <img src="images/eugene ionesco.jpeg" alt="Eugen Ionesco" class="rounded-image">
         <div class="image-title">Eugen Ionescu</div>
       </div>
       <div class="second-image-box">
-        <img src="Eugen Ionesco Desen2.png" alt="Eugen Ionesco - ilustratie realizata de Stoianova Daniel" class="second-rounded-image">
+        <img src="images/Eugen Ionesco Desen2.png" alt="Eugen Ionesco - ilustratie realizata de Stoianova Daniel" class="second-rounded-image">
         <div class="second-image-title">Eugen Ionescu - ilustrație</div>
       </div>
     </div>
@@ -579,26 +355,7 @@
   <footer>
     <div class="footer-content">
       <div class="footer-item">
-        <span class="footer-label">Scoala de proveniența:</span>
-        <ul class="footer-list">
-          <li>Liceul Teoretic Alexandru Ioan Cuza</li>
-        </ul>
-      </div>
-      <div class="footer-item">
-        <span class="footer-label">Profesori coordonatori:</span>
-        <ul class="footer-list">
-          <li>Chiriță Valentina (prof. informatica)</li>
-          <li>Dima Irina Florina (prof. romana)</li>
-        </ul>
-      </div>
-      <div class="footer-item">
-        <span class="footer-label">Site realizat de:</span>
-        <ul class="footer-list">
-          <li>Florea Andrei Șerban</li>
-          <li>Stoianova Daniel</li>
-          <li>Mareș Andrei</li>
-          <li>Mihăiță Alexandru</li>
-        </ul>
+        Site realizat de: Florea Andrei Șerban
       </div>
     </div>
   </footer>
